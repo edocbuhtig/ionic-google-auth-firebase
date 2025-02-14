@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" aria-hidden="true">
+        <ion-icon aria-hidden="true"name="home-sharp" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-icon slot="start" size="large"></ion-icon> -->
+    <ion-title ><strong>Home</strong></ion-title>
+    <!-- <ion-title class="ion-text-center" color="primary" size="small"><strong>C L U B</strong></ion-title> -->
+    <ion-buttons slot="end">
+      @if (auth.currentUser) {
+        <ion-button color="dark" (click)="openUserSettings()" aria-label="Open user settings">
+          <ion-icon slot="icon-only" name="person"></ion-icon>
+        </ion-button>
+      } @else {
+        <ion-button color="dark" (click)="openUserSettings()" aria-label="Login" [disabled]="!authReady">
+          <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+        </ion-button>
+      }
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="refreshPage($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list lines="full">
+
+    @for (user of userList; track user['email']) {
+    <!-- <div>{{ user | json }}</div> -->
+    <ion-item>
+      <ion-icon slot="start" size="large" name="person-circle"></ion-icon>
+      <!-- <ion-avatar slot="start"> -->
+        <!-- <img [src]="user['photoURL']" alt="User photo, or first initial placeholder" referrerpolicy="no-referrer" crossorigin="use-credentials"> -->
+      <!-- </ion-avatar> -->
+      <ion-label>{{ user['displayName'] }}</ion-label>
+    </ion-item>
+    }
+
+    @if (loading) {
+      <ng-container>
+        @for (x of [25, 30, 20]; track x) {
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-skeleton-text [animated]="true" style="border-radius: 50%"></ion-skeleton-text>
+            </ion-avatar>
+            <ion-label>
+              <ion-skeleton-text [animated]="true" style="height: 24px" [ngStyle]="{ 'width': x + '%'}"></ion-skeleton-text>
+            </ion-label>
+          </ion-item>
+        }
+      </ng-container>
+    }
+
+  </ion-list>
+
+</ion-content>

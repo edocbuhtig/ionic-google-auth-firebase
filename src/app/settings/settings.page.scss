@@ -1,0 +1,24 @@
+.user-img,
+ion-icon.user-img {
+    height: 30vw; 
+    width: 30vw; 
+    max-height: 100px; 
+    max-width: 100px; 
+    margin-inline: auto;
+}
+ion-content {
+    overflow-y: auto;
+}
+ion-card-content {
+    padding: 0 0 16px 0;
+}
+ion-label {
+    white-space: normal;
+}
+h1, h4 {
+    text-align: center;
+}
+ion-item {
+    --inner-padding-top: 0;
+    --inner-padding-bottom: 0;
+}

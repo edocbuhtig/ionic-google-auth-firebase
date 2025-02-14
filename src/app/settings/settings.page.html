@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="dark" (click)="close()" aria-label="Close user settings">
+        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  @if (settings) {
+    <ion-card>
+      <ion-card-header>
+        <ion-icon class="user-img" size="large" name="person-circle"></ion-icon>
+        <!-- <ion-avatar class="user-img"> -->
+          <!-- <img [src]="settings.photoURL" alt="User photo, or first initial placeholder"> -->
+        <!-- </ion-avatar> -->
+      </ion-card-header>
+
+      <ion-card-content>
+        <h1>{{ settings.displayName }}</h1>
+        <h4>{{ settings.email }}</h4>
+        <br>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-checkbox [(ngModel)]="settings.seeName" (ngModelChange)="saveSettings()">
+              <ion-label>Option 1</ion-label>
+            </ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowInvites"
+              (ngModelChange)="saveSettings()" class="ion-margin-start">Option 2</ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowChat" (ngModelChange)="saveSettings()"
+              class="ion-margin-start">Option 3</ion-checkbox><br>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowPhotoTags"
+              (ngModelChange)="saveSettings()" class="ion-margin-start">Option 4</ion-checkbox><br>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  }
+
+  <ion-button color="primary" expand="block" (click)="close()" class="ion-margin">Close</ion-button>
+
+  <ion-button color="light" expand="block" (click)="logout()" class="ion-margin">Logout</ion-button>
+
+</ion-content>

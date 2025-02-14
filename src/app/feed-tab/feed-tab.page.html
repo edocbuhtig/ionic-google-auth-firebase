@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" routerLink="/tabs/homeTab" aria-label="Go to Home">
+        <ion-icon aria-hidden="true"name="images-sharp" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Posts
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="dark" (click)="addPost()" aria-label="Add a new Post">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <!-- iterate through postList and display messages and images in each postList -->
+  <ion-list>
+    @for (post of postList; track post.id) {
+      <ion-item>
+        <ion-label>
+          <h2>{{post.title}}</h2>
+          <p>{{post.content}}</p>
+        </ion-label>
+        @for (img of post.imageList; track img) {
+          <ion-thumbnail size="small" slot="end">
+            <img src="{{img}}" alt="placeholder">
+          </ion-thumbnail>
+        }
+      </ion-item>
+    }
+  </ion-list>
+
+</ion-content>

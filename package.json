@@ -28,7 +28,7 @@
     "@capacitor/haptics": "6.0.0",
     "@capacitor/keyboard": "6.0.1",
     "@capacitor/status-bar": "6.0.0",
-    "@ionic/angular": "^8.4.3",
+    "@ionic/angular": "^8.5.7",
     "@ionic/angular-server": "^8.4.3",
     "firebase": "^11.2.0",
     "ionicons": "^7.4.0",
